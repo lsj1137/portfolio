@@ -7,7 +7,7 @@ export default function Flower() {
     <div className="absolute bottom-0 left-[16%] rotate-[-10deg]">
       <motion.div
         style={{
-          backgroundImage: 'url("/dandelion.png")',
+          backgroundImage: 'url("/pictures/dandelion.png")',
           width: "150px",
           height: "450px",
           backgroundSize: "cover",

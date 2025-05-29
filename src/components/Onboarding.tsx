@@ -5,7 +5,7 @@ import TitleBar from "./TitleBar";
 
 export default function Onboarding() {
   return (
-    <>
+    <div className="h-dvh">
       <header className="flex justify-between mt-9">
         <p>Last Update: {LastUpdate}</p>
         <p>{MyEmail}</p>
@@ -15,6 +15,6 @@ export default function Onboarding() {
       <span lang="ko" className="absolute bottom-9 right-[13%]">
         웹 프론트엔드 & 모바일 앱 개발자
       </span>
-    </>
+    </div>
   );
 }
