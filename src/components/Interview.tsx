@@ -6,11 +6,11 @@ export default function Interview() {
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 2, ease: "easeOut" }}
-      viewport={{ once: false, amount: 1 }}
+      viewport={{ once: false, amount: 0.2 }}
       style={{
         fontWeight: "bold",
       }}
-      className="absolute left-0 top-[50%] text-[18px]"
+      className=" mt-[160px]"
     >
       <p lang="ko">
         안녕하세요, <br />웹 프론트엔드와 크로스플랫폼 모바일 앱을 개발하는

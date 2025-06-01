@@ -37,7 +37,7 @@ export default function Skills() {
     if (latest === 1) {
       setTitleStyle({
         opacity: 1,
-        top: 0,
+        top: 100,
       });
     }
   });
@@ -57,7 +57,7 @@ export default function Skills() {
         <span lang="en">Skills</span>
       </motion.div>
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 ">
+      <div className="mt-14 w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 ">
         <SkillGroup
           groupName="프론트엔드"
           cols={4}

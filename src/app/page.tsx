@@ -30,9 +30,8 @@ export default function Home() {
       <ProgressBar progress={totalScrollYProgress} />
       <Onboarding />
       {curSection > 0 && <Introducing />}
-      {curSection > 1 && <Career />}
-      {curSection > 2 && <Skills />}
-      {curSection > 3 && <Projects />}
+      {curSection > 1 && <Skills />}
+      {curSection > 2 && <Projects />}
     </div>
   );
 }

@@ -1,16 +1,27 @@
 import { careerList } from "@/constants/careerList";
 import CareerLine from "./CareerLine";
+import { motion } from "motion/react";
 
 export default function Career() {
   return (
-    <div className="flex flex-col h-dvh gap-10">
+    <div className="flex flex-col h-dvh gap-8">
       {careerList.map((career, i) => (
-        <CareerLine
+        <motion.div
           key={i}
-          date={career.date}
-          isPeriod={career.date.length > 10}
-          content={career.content}
-        />
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.5 }}
+          style={{
+            fontWeight: "bold",
+          }}
+        >
+          <CareerLine
+            date={career.date}
+            isPeriod={career.date.length > 10}
+            content={career.content}
+          />
+        </motion.div>
       ))}
     </div>
   );

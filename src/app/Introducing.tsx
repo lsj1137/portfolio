@@ -10,6 +10,7 @@ import {
   VariantLabels,
 } from "motion/react";
 import Interview from "../components/Interview";
+import Career from "@/components/Career";
 
 export default function Introducing() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -53,7 +54,7 @@ export default function Introducing() {
   });
 
   return (
-    <section className="h-screen relative snap-start" ref={sectionRef}>
+    <section className=" h-screen relative flex flex-col" ref={sectionRef}>
       {/* 얼굴 사진 */}
       <motion.div
         transition={{ duration: 2, ease: "easeInOut" }}
@@ -87,9 +88,9 @@ export default function Introducing() {
         <span lang="en">Introducing</span>
       </motion.div>
 
-      {/* 아래 소개글 본문 */}
-
       <Interview />
+      <div className="h-10"></div>
+      <Career />
     </section>
   );
 }
