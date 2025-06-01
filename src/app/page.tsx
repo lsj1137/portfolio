@@ -3,6 +3,7 @@
 import Career from "@/components/Career";
 import Introducing from "@/components/Introducing";
 import Onboarding from "@/components/Onboarding";
+import Skills from "@/components/Skills";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
 
@@ -21,6 +22,7 @@ export default function Home() {
       <Onboarding />
       {curSection > 0 && <Introducing />}
       {curSection > 1 && <Career />}
+      {curSection > 2 && <Skills />}
     </div>
   );
 }
