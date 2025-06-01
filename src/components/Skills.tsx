@@ -10,6 +10,16 @@ import {
   VariantLabels,
 } from "motion/react";
 import SkillGroup from "./SkillGroup";
+import {
+  backend,
+  backendUrls,
+  corp,
+  corpUrls,
+  develop,
+  developUrls,
+  frontend,
+  frontendUrls,
+} from "@/constants/skillList";
 
 export default function Skills() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -51,26 +61,23 @@ export default function Skills() {
         <SkillGroup
           groupName="프론트엔드"
           cols={4}
-          skills={["html5", "css3", "js", "ts", "react", "flutter", "next"]}
+          skills={frontend}
+          urls={frontendUrls}
         />
         <SkillGroup
           groupName="백엔드 & 인프라"
-          skills={["express", "flask", "mysql", "mongodb", "nginx", "awsec2"]}
+          skills={backend}
+          urls={backendUrls}
         />
         <SkillGroup
           groupName="언어 & 개발도구"
-          skills={[
-            "github",
-            "git",
-            "vscode",
-            "putty",
-            "python",
-            "androidstudio",
-          ]}
+          skills={develop}
+          urls={developUrls}
         />
         <SkillGroup
           groupName="생산성 & 협업도구"
-          skills={["swagger", "slack", "jira", "notion", "openai", "figma"]}
+          skills={corp}
+          urls={corpUrls}
         />
       </div>
     </section>
