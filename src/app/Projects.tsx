@@ -8,7 +8,7 @@ import {
   VariantLabels,
 } from "motion/react";
 import { useState } from "react";
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "../components/ProjectCard";
 
 export default function Projects() {
   const { scrollYProgress } = useScroll();

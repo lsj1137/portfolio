@@ -9,7 +9,7 @@ import {
   useScroll,
   VariantLabels,
 } from "motion/react";
-import SkillGroup from "./SkillGroup";
+import SkillGroup from "../components/SkillGroup";
 import {
   backend,
   backendUrls,

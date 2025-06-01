@@ -1,16 +1,19 @@
 "use client";
 
 import Career from "@/components/Career";
-import Introducing from "@/components/Introducing";
+import Introducing from "@/app/Introducing";
 import Onboarding from "@/components/Onboarding";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
+import Projects from "@/app/Projects";
+import Skills from "@/app/Skills";
 import { useMotionValueEvent, useScroll } from "motion/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import ProgressBar from "@/components/ProgressBar";
 
 export default function Home() {
-  const { scrollYProgress } = useScroll();
+  const { scrollY, scrollYProgress } = useScroll();
   const [curSection, setSection] = useState(0);
+  const [totalScrollYProgress, setTotalScrollYProgress] = useState(0);
+  const totalScroll = useRef(4000);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (latest === 1) {
@@ -18,8 +21,13 @@ export default function Home() {
     }
   });
 
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setTotalScrollYProgress(latest / totalScroll.current);
+  });
+
   return (
-    <div className="w-full flex flex-col ">
+    <div className="w-full flex flex-col">
+      <ProgressBar progress={totalScrollYProgress} />
       <Onboarding />
       {curSection > 0 && <Introducing />}
       {curSection > 1 && <Career />}

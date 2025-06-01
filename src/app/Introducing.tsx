@@ -9,7 +9,7 @@ import {
   useScroll,
   VariantLabels,
 } from "motion/react";
-import Interview from "./Interview";
+import Interview from "../components/Interview";
 
 export default function Introducing() {
   const sectionRef = useRef<HTMLDivElement>(null);
