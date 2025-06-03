@@ -43,7 +43,14 @@
 
 body {
   background-image: url("/background.png");
-  padding-inline: 13%;
+  padding-inline: 5%;
+}
+
+/* md 이상: 768px~ */
+@media (min-width: 768px) {
+  body {
+    padding-inline: 20%;
+  }
 }
 
 span:lang(ko) {

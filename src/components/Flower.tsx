@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export default function Flower() {
   return (
-    <div className="absolute bottom-0 left-[16%] rotate-[-10deg]">
+    <div className="absolute bottom-0 left-[18%] rotate-[-10deg]">
       <motion.div
         style={{
           backgroundImage: 'url("/pictures/dandelion.png")',

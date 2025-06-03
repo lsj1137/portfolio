@@ -32,8 +32,8 @@ export default function ProjectCard({
         height={150}
         className="rounded-t-[20px]"
       />
-      <div className="flex flex-col bg-white rounded-b-[20px] h-[150px] shadow p-5">
-        <p lang="ko" className="flex-1 text-[18px] mb-4">
+      <div className="flex flex-col bg-white rounded-b-[20px] h-[120px] md:h-[150px] shadow p-5">
+        <p lang="ko" className="flex-1 text-[16px]  md:text-[18px] mb-4">
           {title}
         </p>
         <div className="flex gap-5 justify-end">
@@ -49,13 +49,11 @@ export default function ProjectCard({
         </div>
       </div>
       <div
-        className={` absolute flex flex-col gap-10 px-5 justify-center items-center h-full w-full text-center rounded-[20px] bg-white/90 transition-all ease-in-out duration-200 ${
+        className={` absolute flex flex-col gap-10 px-5 justify-center items-center h-full w-full text-[14px] md:text-[16px] text-center rounded-[20px] bg-white/90 transition-all ease-in-out duration-200 ${
           hovering ? "opacity-100" : " opacity-0"
         }`}
       >
-        <p lang="ko" className="text-[16px]">
-          {content}
-        </p>
+        <p lang="ko">{content}</p>
         <p lang="ko" className="decoration-1 decoration-black">
           자세히 보기 🔗
         </p>

@@ -43,7 +43,7 @@ export default function Projects() {
           <span lang="ko">🏵️ 프로젝트 </span>
           <span lang="en">Projects</span>
         </motion.div>
-        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-10 my-20">
+        <div className=" grid grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-5 lg:gap-10 my-20">
           {projectList.map((project, i) => (
             <ProjectCard
               key={i}

@@ -23,7 +23,7 @@ export default function Onboarding() {
         width={"7%"}
         className="absolute bottom-22 left-[50%] -translate-x-1/2 animate-bounce"
       ></img>
-      <span lang="ko" className="absolute bottom-9 right-[13%]">
+      <span lang="ko" className="absolute bottom-9 right-[20%]">
         웹 프론트엔드 & 모바일 앱 개발자
       </span>
     </div>
