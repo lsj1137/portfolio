@@ -1,10 +1,12 @@
 import { careerList } from "@/constants/careerList";
 import CareerLine from "./CareerLine";
 import { motion } from "motion/react";
+import { useScreenStore } from "@/hooks/useScreenStore";
 
 export default function Career() {
+  const { screenHeight, screenWidth } = useScreenStore();
   return (
-    <div className="flex flex-col h-dvh gap-8">
+    <div className="flex flex-col gap-8">
       {careerList.map((career, i) => (
         <motion.div
           key={i}
