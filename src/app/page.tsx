@@ -7,7 +7,6 @@ import Skills from "@/app/Skills";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { useRef, useState } from "react";
 import ProgressBar from "@/components/ProgressBar";
-import { create } from "zustand";
 import { useSectionStore } from "@/hooks/useSectionStore";
 
 export default function Home() {
@@ -20,11 +19,11 @@ export default function Home() {
   const [totalScrollYProgress, setTotalScrollYProgress] = useState(0);
   const totalScroll = useRef(4000);
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest === 1) {
-      increaseSection();
-    }
-  });
+  // useMotionValueEvent(scrollYProgress, "change", (latest) => {
+  //   if (latest === 1) {
+  //     increaseSection();
+  //   }
+  // });
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setTotalScrollYProgress(latest / totalScroll.current);
@@ -34,9 +33,9 @@ export default function Home() {
     <div className="w-full flex flex-col">
       <ProgressBar progress={totalScrollYProgress} />
       <Onboarding />
-      {section > 0 && <Introducing />}
-      {section > 1 && <Skills />}
-      {section > 2 && <Projects />}
+      <Introducing />
+      <Skills />
+      <Projects />
     </div>
   );
 }

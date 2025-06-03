@@ -20,10 +20,12 @@ import {
   frontend,
   frontendUrls,
 } from "@/constants/skillList";
+import { useSectionStore } from "@/hooks/useSectionStore";
 
 export default function Skills() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
+  const { section: curSection } = useSectionStore();
   const [titleStyle, setTitleStyle] = useState<
     | boolean
     | TargetAndTransition
@@ -43,43 +45,45 @@ export default function Skills() {
   });
 
   return (
-    <section
-      className="h-screen relative flex items-center justify-center"
-      ref={sectionRef}
-    >
-      {/* 제목 */}
-      <motion.div
-        transition={{ duration: 2, ease: "easeInOut" }}
-        animate={titleStyle}
-        className=" absolute top-[50%] left-0 -translate-y-1/2 font-bold text-[24px]"
+    curSection > 1 && (
+      <section
+        className="h-screen relative flex items-center justify-center"
+        ref={sectionRef}
       >
-        <span lang="ko">🌸 기술 </span>
-        <span lang="en">Skills</span>
-      </motion.div>
+        {/* 제목 */}
+        <motion.div
+          transition={{ duration: 2, ease: "easeInOut" }}
+          animate={titleStyle}
+          className=" absolute top-[50%] left-0 -translate-y-1/2 font-bold text-[24px]"
+        >
+          <span lang="ko">🌸 기술 </span>
+          <span lang="en">Skills</span>
+        </motion.div>
 
-      <div className="mt-14 w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 ">
-        <SkillGroup
-          groupName="프론트엔드"
-          cols={4}
-          skills={frontend}
-          urls={frontendUrls}
-        />
-        <SkillGroup
-          groupName="백엔드 & 인프라"
-          skills={backend}
-          urls={backendUrls}
-        />
-        <SkillGroup
-          groupName="언어 & 개발도구"
-          skills={develop}
-          urls={developUrls}
-        />
-        <SkillGroup
-          groupName="생산성 & 협업도구"
-          skills={corp}
-          urls={corpUrls}
-        />
-      </div>
-    </section>
+        <div className="mt-14 w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 ">
+          <SkillGroup
+            groupName="프론트엔드"
+            cols={4}
+            skills={frontend}
+            urls={frontendUrls}
+          />
+          <SkillGroup
+            groupName="백엔드 & 인프라"
+            skills={backend}
+            urls={backendUrls}
+          />
+          <SkillGroup
+            groupName="언어 & 개발도구"
+            skills={develop}
+            urls={developUrls}
+          />
+          <SkillGroup
+            groupName="생산성 & 협업도구"
+            skills={corp}
+            urls={corpUrls}
+          />
+        </div>
+      </section>
+    )
   );
 }

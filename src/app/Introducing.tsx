@@ -11,10 +11,12 @@ import {
 } from "motion/react";
 import Interview from "../components/Interview";
 import Career from "@/components/Career";
+import { useSectionStore } from "@/hooks/useSectionStore";
 
 export default function Introducing() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
+  const { section: curSection } = useSectionStore();
   const [titleStyle, setTitleStyle] = useState<
     | boolean
     | TargetAndTransition
@@ -54,43 +56,45 @@ export default function Introducing() {
   });
 
   return (
-    <section className=" h-screen relative flex flex-col" ref={sectionRef}>
-      {/* 얼굴 사진 */}
-      <motion.div
-        transition={{ duration: 2, ease: "easeInOut" }}
-        animate={photoStyle}
-        className="absolute top-[50%] -translate-y-1/2 right-0 w-[45%] h-auto bg-white"
-      >
-        <img
-          src="/pictures/graduate.jpg"
-          alt="폴라로이드"
-          style={{
-            width: "100%",
-            display: "block",
-          }}
-        />
-        <p
-          lang="ko"
-          className={`text-right mt-4 transition-opacity ease-in-out duration-1000 ${
-            showText ? "opacity-100" : "opacity-0"
-          }`}
+    curSection > 0 && (
+      <section className=" h-screen relative flex flex-col" ref={sectionRef}>
+        {/* 얼굴 사진 */}
+        <motion.div
+          transition={{ duration: 2, ease: "easeInOut" }}
+          animate={photoStyle}
+          className="absolute top-[50%] -translate-y-1/2 right-0 w-[45%] h-auto bg-white"
         >
-          2025.02 졸업
-        </p>
-      </motion.div>
-      {/* 제목 */}
-      <motion.div
-        transition={{ duration: 2, ease: "easeInOut" }}
-        animate={titleStyle}
-        className=" absolute top-[50%] left-0 -translate-y-1/2 font-bold text-[24px]"
-      >
-        <span lang="ko">🌺 소개글 </span>
-        <span lang="en">Introducing</span>
-      </motion.div>
+          <img
+            src="/pictures/graduate.jpg"
+            alt="폴라로이드"
+            style={{
+              width: "100%",
+              display: "block",
+            }}
+          />
+          <p
+            lang="ko"
+            className={`text-right mt-4 transition-opacity ease-in-out duration-1000 ${
+              showText ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            2025.02 졸업
+          </p>
+        </motion.div>
+        {/* 제목 */}
+        <motion.div
+          transition={{ duration: 2, ease: "easeInOut" }}
+          animate={titleStyle}
+          className=" absolute top-[50%] left-0 -translate-y-1/2 font-bold text-[24px]"
+        >
+          <span lang="ko">🌺 소개글 </span>
+          <span lang="en">Introducing</span>
+        </motion.div>
 
-      <Interview />
-      <div className="h-10"></div>
-      <Career />
-    </section>
+        <Interview />
+        <div className="h-10"></div>
+        <Career />
+      </section>
+    )
   );
 }

@@ -1,11 +1,13 @@
 "use client";
 
+import { useSectionStore } from "@/hooks/useSectionStore";
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 
 export default function TitleBar() {
   const [title, setTitle] = useState<string[]>([" ", " ", " "]);
   const [subTitle, setSubTitle] = useState<string>("");
+  const { increase: increaseSection } = useSectionStore();
 
   useEffect(() => {
     setTitle("임세준".split(""));
@@ -13,6 +15,7 @@ export default function TitleBar() {
     setTimeout(() => {
       setTitle("포트폴리오".split(""));
       setSubTitle("Portfolio");
+      increaseSection();
     }, 2000);
   }, []);
 
