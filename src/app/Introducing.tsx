@@ -12,11 +12,18 @@ import {
 import Interview from "../components/Interview";
 import Career from "@/components/Career";
 import { useSectionStore } from "@/hooks/useSectionStore";
+import { useScreenStore } from "@/hooks/useScreenStore";
+import Image from "next/image";
+import ProfileLink from "@/components/ProfileLink";
+import ScrollTrigger from "@/components/ScrollTrigger";
 
 export default function Introducing() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll();
-  const { section: curSection } = useSectionStore();
+  const { scrollY } = useScroll();
+  const { section: curSection, increase: increaseSection } = useSectionStore();
+  const { screenHeight, screenWidth } = useScreenStore();
+  const [showCareer, setShowCareer] = useState(false);
+
   const [titleStyle, setTitleStyle] = useState<
     | boolean
     | TargetAndTransition
@@ -33,21 +40,17 @@ export default function Introducing() {
   >({});
   const [showText, setShowText] = useState(false);
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest === 1) {
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest >= screenHeight) {
       setTitleStyle({
         opacity: 1,
-        top: 100,
+        top: 300,
       });
       setPhotoStyle({
         opacity: 1,
-        top: 400,
         width: "20%",
-        rotate: "-8deg",
         boxShadow: "0 8px 20px rgba(0, 0, 0, 0.25)",
-        paddingTop: "12px",
-        paddingInline: "12px",
-        paddingBottom: "16px",
+        padding: "12px",
       });
       setTimeout(() => {
         setShowText(true);
@@ -55,31 +58,30 @@ export default function Introducing() {
     }
   });
 
+  const handleScrollTrigger = () => {
+    if (curSection === 1) {
+      increaseSection();
+    }
+  };
+
   return (
     curSection > 0 && (
       <section className=" h-screen relative flex flex-col" ref={sectionRef}>
+        <ScrollTrigger onTrigger={handleScrollTrigger}></ScrollTrigger>
         {/* 얼굴 사진 */}
         <motion.div
           transition={{ duration: 2, ease: "easeInOut" }}
           animate={photoStyle}
-          className="absolute top-[50%] -translate-y-1/2 right-0 w-[45%] h-auto bg-white"
+          className="absolute top-[50%] -translate-y-1/2 md:right-0 w-[45%] min-w-[150px] h-auto bg-white"
         >
           <img
-            src="/pictures/graduate.jpg"
+            src="/pictures/profile_image.jpg"
             alt="폴라로이드"
             style={{
               width: "100%",
               display: "block",
             }}
           />
-          <p
-            lang="ko"
-            className={`text-right mt-4 transition-opacity ease-in-out duration-1000 ${
-              showText ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            2025.02 졸업
-          </p>
         </motion.div>
         {/* 제목 */}
         <motion.div
@@ -92,8 +94,23 @@ export default function Introducing() {
         </motion.div>
 
         <Interview />
-        <div className="h-10"></div>
-        <Career />
+
+        <div className="absolute bottom-[50%] translate-y-1/2 md:bottom-8 md:translate-y-0 right-0 flex flex-col md:flex-row gap-4">
+          <ProfileLink
+            url="https://github.com/lsj1137/"
+            imgSrc="/pictures/github_logo.png"
+            alt="github logo"
+            width={screenWidth < 768 ? 60 : 100}
+            title="깃허브"
+          ></ProfileLink>
+          <ProfileLink
+            url="https://three-jun.tistory.com/"
+            imgSrc="/pictures/tistory_logo.png"
+            alt="tistory logo"
+            width={screenWidth < 768 ? 60 : 100}
+            title="티스토리"
+          ></ProfileLink>
+        </div>
       </section>
     )
   );
