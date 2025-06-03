@@ -21,11 +21,14 @@ import {
   frontendUrls,
 } from "@/constants/skillList";
 import { useSectionStore } from "@/hooks/useSectionStore";
+import { useScreenStore } from "@/hooks/useScreenStore";
+import ScrollTrigger from "@/components/ScrollTrigger";
 
 export default function Skills() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll();
-  const { section: curSection } = useSectionStore();
+  const { scrollY } = useScroll();
+  const { screenHeight } = useScreenStore();
+  const { section: curSection, increase: increaseSection } = useSectionStore();
   const [titleStyle, setTitleStyle] = useState<
     | boolean
     | TargetAndTransition
@@ -33,16 +36,27 @@ export default function Skills() {
     | AnimationControls
     | undefined
   >({});
-  // const [showText, setShowText] = useState(false);
+  const [skillsStyle, setSkillsStyle] = useState<
+    TargetAndTransition | VariantLabels | undefined
+  >({});
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest === 1) {
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest >= screenHeight * 2) {
       setTitleStyle({
         opacity: 1,
         top: 100,
       });
+      setTimeout(() => {
+        setSkillsStyle({ opacity: 1, y: 0 });
+      }, 1500);
     }
   });
+
+  const handleScrollTrigger = () => {
+    if (curSection === 2) {
+      increaseSection();
+    }
+  };
 
   return (
     curSection > 1 && (
@@ -50,9 +64,10 @@ export default function Skills() {
         className="h-screen relative flex items-center justify-center"
         ref={sectionRef}
       >
+        <ScrollTrigger onTrigger={handleScrollTrigger} />
         {/* 제목 */}
         <motion.div
-          transition={{ duration: 2, ease: "easeInOut" }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
           animate={titleStyle}
           className=" absolute top-[50%] left-0 -translate-y-1/2 font-bold text-[24px]"
         >
@@ -60,7 +75,13 @@ export default function Skills() {
           <span lang="en">Skills</span>
         </motion.div>
 
-        <div className="mt-14 w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 ">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={skillsStyle}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.2 }}
+          className="mt-14 w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 "
+        >
           <SkillGroup
             groupName="프론트엔드"
             cols={4}
@@ -82,7 +103,7 @@ export default function Skills() {
             skills={corp}
             urls={corpUrls}
           />
-        </div>
+        </motion.div>
       </section>
     )
   );
