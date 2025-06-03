@@ -20,7 +20,7 @@ export default function TitleBar() {
   }, []);
 
   return (
-    <h1 className="absolute top-[50%] -translate-y-1/2 right-[13%] w-[120px] lg:w-[37%] text-[40px] lg:text-[64px]">
+    <h1 className="absolute top-[50%] -translate-y-1/2 right-[13%] w-[100px] md:w-[37%] text-[40px] lg:text-[64px]">
       <AnimatePresence mode="wait">
         <motion.div
           key={title.reduce((c, a) => a + c, "")}
