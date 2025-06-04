@@ -68,3 +68,7 @@ p:lang(ko) {
 p:lang(en) {
   font-family: "NotoSerif", sans-serif;
 }
+
+input:lang(ko) {
+  font-family: "KoPub Batang", serif;
+}

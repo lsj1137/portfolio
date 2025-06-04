@@ -9,6 +9,8 @@ import { useEffect, useRef, useState } from "react";
 import ProgressBar from "@/components/ProgressBar";
 import { useSectionStore } from "@/hooks/useSectionStore";
 import { useScreenStore } from "@/hooks/useScreenStore";
+import Career from "./Career";
+import GuestBook from "./GuestBook";
 
 export default function Home() {
   const { scrollY, scrollYProgress } = useScroll();
@@ -39,6 +41,8 @@ export default function Home() {
       <Introducing />
       <Skills />
       <Projects />
+      <Career />
+      <GuestBook />
     </div>
   );
 }

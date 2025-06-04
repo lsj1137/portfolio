@@ -1,0 +1,20 @@
+.guestbook-left::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  width: 24px;
+  height: 530px;
+  margin-top: 70px;
+  z-index: 100;
+  background: linear-gradient(to right, #f6f4f1, transparent);
+}
+
+.guestbook-right::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  width: 24px;
+  height: 530px;
+  margin-top: 70px;
+  background: linear-gradient(to left, #f6f4f1, transparent);
+}

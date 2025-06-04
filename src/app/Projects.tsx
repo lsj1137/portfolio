@@ -41,7 +41,7 @@ export default function Projects() {
   });
 
   const handleScrollTrigger = () => {
-    if (curSection === 2) {
+    if (curSection === 3) {
       increaseSection();
     }
   };
