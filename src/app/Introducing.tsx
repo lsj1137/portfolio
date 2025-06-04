@@ -10,10 +10,8 @@ import {
   VariantLabels,
 } from "motion/react";
 import Interview from "../components/Interview";
-import Career from "@/components/Career";
 import { useSectionStore } from "@/hooks/useSectionStore";
 import { useScreenStore } from "@/hooks/useScreenStore";
-import Image from "next/image";
 import ProfileLink from "@/components/ProfileLink";
 import ScrollTrigger from "@/components/ScrollTrigger";
 
@@ -22,7 +20,6 @@ export default function Introducing() {
   const { scrollY } = useScroll();
   const { section: curSection, increase: increaseSection } = useSectionStore();
   const { screenHeight, screenWidth } = useScreenStore();
-  const [showCareer, setShowCareer] = useState(false);
 
   const [titleStyle, setTitleStyle] = useState<
     | boolean
