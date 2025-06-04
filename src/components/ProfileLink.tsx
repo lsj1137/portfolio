@@ -19,13 +19,21 @@ export default function ProfileLink({
 }: ProfileLinkProps) {
   return (
     <div
-      className="  flex flex-col items-center cursor-pointer"
+      className="  flex flex-col items-center"
       onClick={() => {
         window.open(url, "_blank");
       }}
     >
-      <Image src={imgSrc} alt={alt} width={width} height={height}></Image>
-      <p lang="ko">{title}</p>
+      <Image
+        src={imgSrc}
+        alt={alt}
+        width={width}
+        height={height}
+        className=" hover-target"
+      ></Image>
+      <p lang="ko" className="hover-target">
+        {title}
+      </p>
     </div>
   );
 }

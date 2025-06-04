@@ -73,7 +73,7 @@ export default function SkillGroup({
                     onMouseEnter={() => handleMouseEnter(skill)}
                     onMouseLeave={handleMouseLeave}
                     onClick={() => handleClick(urls[cols * i + j])}
-                    className=" cursor-pointer"
+                    className=" hover-target"
                   ></Image>
                 </div>
               );
@@ -84,7 +84,7 @@ export default function SkillGroup({
       {showTooltip && (
         <div
           className="absolute z-50 pointer-events-none bg-white px-3 py-2 rounded shadow"
-          style={{ top: mousePosition.y, left: mousePosition.x }}
+          style={{ top: mousePosition.y + 14, left: mousePosition.x }}
         >
           <p lang="en" className="text-xs text-black">
             {skillDescription}

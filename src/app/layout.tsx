@@ -1,3 +1,4 @@
+import Cursor from "@/components/Cursor";
 import "../styles/globals.css";
 
 export default function RootLayout({
@@ -7,7 +8,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scrollbar-hide">
-      <body>{children}</body>
+      <body>
+        <Cursor />
+        {children}
+      </body>
     </html>
   );
 }

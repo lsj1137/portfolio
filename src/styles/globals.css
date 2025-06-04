@@ -72,3 +72,7 @@ p:lang(en) {
 input:lang(ko) {
   font-family: "KoPub Batang", serif;
 }
+
+.hovering {
+  background-image: url("/pictures/bee_boom_up.png");
+}

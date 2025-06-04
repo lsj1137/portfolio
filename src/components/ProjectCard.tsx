@@ -20,7 +20,7 @@ export default function ProjectCard({
 
   return (
     <div
-      className=" relative flex flex-col cursor-pointer transition-all ease-in-out duration-200"
+      className=" relative flex flex-col hover-target transition-all ease-in-out duration-200"
       onClick={() => window.open(url, "_blank")}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
@@ -49,12 +49,14 @@ export default function ProjectCard({
         </div>
       </div>
       <div
-        className={` absolute flex flex-col gap-10 px-5 justify-center items-center h-full w-full text-[14px] md:text-[16px] text-center rounded-[20px] bg-white/90 transition-all ease-in-out duration-200 ${
+        className={` hover-target absolute flex flex-col gap-10 px-5 justify-center items-center h-full w-full text-[14px] md:text-[16px] text-center rounded-[20px] bg-white/90 transition-all ease-in-out duration-200 ${
           hovering ? "opacity-100" : " opacity-0"
         }`}
       >
-        <p lang="ko">{content}</p>
-        <p lang="ko" className="decoration-1 decoration-black">
+        <p lang="ko" className="hover-target ">
+          {content}
+        </p>
+        <p lang="ko" className="hover-target decoration-1 decoration-black">
           자세히 보기 🔗
         </p>
       </div>

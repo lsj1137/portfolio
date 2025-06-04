@@ -78,7 +78,7 @@ export default function GuestBook() {
                 width={24}
                 height={24}
                 alt="send button"
-                className="w-6 h-6 cursor-pointer"
+                className="w-6 h-6 hover-target"
                 onClick={() => {
                   handleSubmit(inputValue);
                 }}

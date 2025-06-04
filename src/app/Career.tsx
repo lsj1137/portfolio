@@ -63,24 +63,22 @@ export default function Career() {
           <span lang="en">Career</span>
         </motion.div>
         {showCareer && (
-          <div className="mt-[20%] flex flex-col gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.5 }}
+            className="mt-[20%] flex flex-col gap-8"
+          >
             {careerList.map((career, i) => (
-              <motion.div
+              <CareerLine
                 key={i}
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 2, ease: "easeOut" }}
-                viewport={{ once: false, amount: 0.5 }}
-                style={{}}
-              >
-                <CareerLine
-                  date={career.date}
-                  isPeriod={career.date.length > 10}
-                  content={career.content}
-                />
-              </motion.div>
+                date={career.date}
+                isPeriod={career.date.length > 10}
+                content={career.content}
+              />
             ))}
-          </div>
+          </motion.div>
         )}
       </section>
     )
