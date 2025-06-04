@@ -48,7 +48,7 @@ export default function Projects() {
 
   return (
     curSection > 2 && (
-      <section className="h-screen relative flex flex-col items-center justify-center">
+      <section className="h-screen relative flex flex-col">
         <ScrollTrigger onTrigger={handleScrollTrigger} />
         {/* 제목 */}
         <motion.div
@@ -65,7 +65,7 @@ export default function Projects() {
           whileInView={projectsStyle}
           transition={{ duration: 1.5, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.2 }}
-          className=" grid grid-cols-2 lg:grid-cols-4 grid-rows-2 gap-5 lg:gap-8 my-20"
+          className="mt-[160px] grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-8 "
         >
           {projectList.map((project, i) => (
             <ProjectCard

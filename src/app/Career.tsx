@@ -68,7 +68,7 @@ export default function Career() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 2, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.5 }}
-            className="mt-[20%] flex flex-col gap-8"
+            className="mt-[160px] flex flex-col gap-8"
           >
             {careerList.map((career, i) => (
               <CareerLine

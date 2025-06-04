@@ -57,7 +57,7 @@ export default function ProjectCard({
           {content}
         </p>
         <p lang="ko" className="hover-target decoration-1 decoration-black">
-          자세히 보기 🔗
+          자세히 {">"}
         </p>
       </div>
     </div>
