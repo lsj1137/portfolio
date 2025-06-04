@@ -7,6 +7,12 @@
   margin-top: 70px;
   z-index: 100;
   background: linear-gradient(to right, #f6f4f1, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.guestbook-left.show-left-gradient::before {
+  opacity: 1;
 }
 
 .guestbook-right::after {
@@ -17,4 +23,10 @@
   height: 530px;
   margin-top: 70px;
   background: linear-gradient(to left, #f6f4f1, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.guestbook-right.show-right-gradient::after {
+  opacity: 1;
 }
