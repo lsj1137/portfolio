@@ -1,23 +1,6 @@
-import { useScreenStore } from "@/hooks/useScreenStore";
-import { motion } from "motion/react";
-
 export default function Interview() {
-  const { screenHeight, screenWidth } = useScreenStore();
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 2, ease: "easeOut" }}
-      viewport={{ once: false, amount: 0.2 }}
-      style={{
-        marginTop:
-          screenWidth >= 768
-            ? `${screenHeight / 2}px`
-            : `${(screenHeight * 4) / 5}px`,
-      }}
-      className=" -translate-y-1/2 max-w-[500px]"
-    >
+    <>
       <p lang="ko">
         안녕하세요, <br />웹 프론트엔드와 크로스플랫폼 모바일 앱을 개발하는
         임세준입니다.
@@ -41,6 +24,6 @@ export default function Interview() {
         <p lang="ko"># 즐거운_마음</p>
         <p lang="ko"># 책임감</p>
       </div>
-    </motion.div>
+    </>
   );
 }

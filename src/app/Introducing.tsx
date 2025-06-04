@@ -35,6 +35,9 @@ export default function Introducing() {
     | AnimationControls
     | undefined
   >({});
+  const [interviewStyle, setInterviewStyle] = useState<
+    TargetAndTransition | VariantLabels | undefined
+  >({});
   const [showText, setShowText] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -51,6 +54,7 @@ export default function Introducing() {
       });
       setTimeout(() => {
         setShowText(true);
+        setInterviewStyle({ opacity: 1, y: 0 });
       }, 1000);
     }
   });
@@ -67,7 +71,7 @@ export default function Introducing() {
         <ScrollTrigger onTrigger={handleScrollTrigger}></ScrollTrigger>
         {/* 얼굴 사진 */}
         <motion.div
-          transition={{ duration: 2, ease: "easeInOut" }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
           animate={photoStyle}
           className="absolute top-[50%] -translate-y-1/2 md:right-0 w-[45%] min-w-[150px] h-auto bg-white"
         >
@@ -82,7 +86,7 @@ export default function Introducing() {
         </motion.div>
         {/* 제목 */}
         <motion.div
-          transition={{ duration: 2, ease: "easeInOut" }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
           animate={titleStyle}
           className=" absolute top-[50%] left-0 -translate-y-1/2 font-bold text-[24px]"
         >
@@ -90,9 +94,27 @@ export default function Introducing() {
           <span lang="en">Introducing</span>
         </motion.div>
 
-        <Interview />
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={interviewStyle}
+          transition={{ duration: 2, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.2 }}
+          style={{
+            marginTop:
+              screenWidth >= 768
+                ? `${screenHeight / 2}px`
+                : `${(screenHeight * 4) / 5}px`,
+          }}
+          className=" -translate-y-1/2 max-w-[500px]"
+        >
+          <Interview />
+        </motion.div>
 
-        <div className="absolute bottom-[50%] translate-y-1/2 md:bottom-8 md:translate-y-0 right-0 flex flex-col md:flex-row gap-4">
+        <div
+          className={`absolute bottom-[50%] translate-y-1/2 md:bottom-8 md:translate-y-0 right-0 flex flex-col md:flex-row gap-4 transition-all ease-in-out duration-200 ${
+            showText ? "opacity-100" : "opacity-0"
+          }`}
+        >
           <ProfileLink
             url="https://github.com/lsj1137/"
             imgSrc="/pictures/github_logo.png"
