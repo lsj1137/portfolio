@@ -12,6 +12,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSectionStore } from "@/hooks/useSectionStore";
 import Image from "next/image";
 import PostIt from "@/components/PostIt";
+import { getGuestbook, Guestbook, postGuestbook } from "@/api/guestbook";
 
 export default function GuestBook() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -22,7 +23,7 @@ export default function GuestBook() {
   const { scrollY } = useScroll();
   const [showGuestbook, setShowGuestbook] = useState(false);
   const [inputValue, setInputValue] = useState<string>("");
-  const [guestbook, setGuestbook] = useState<string[]>([]);
+  const [guestbooks, setGuestbooks] = useState<Guestbook[]>([]);
 
   const [titleStyle, setTitleStyle] = useState<
     | boolean
@@ -58,7 +59,9 @@ export default function GuestBook() {
 
   useEffect(() => {
     // TODO
-    // GET - guestbook
+    getGuestbook().then((data) => {
+      setGuestbooks(data);
+    });
   }, []);
 
   useEffect(() => {
@@ -78,10 +81,10 @@ export default function GuestBook() {
 
   useEffect(() => {
     checkScroll();
-  }, [guestbook]);
+  }, [guestbooks]);
 
   const handleSubmit = (value: string) => {
-    setGuestbook((prev) => [value, ...prev]);
+    postGuestbook({ name: "익명", content: value });
     setInputValue("");
   };
 
@@ -137,8 +140,12 @@ export default function GuestBook() {
               className=" relative grid w-full overflow-x-auto scrollbar-hide flex-1 grid-flow-col grid-rows-3 md:grid-rows-2 gap-5 auto-cols-max "
               ref={scrollRef}
             >
-              {guestbook.map((content, i) => (
-                <PostIt key={i} content={content} />
+              {guestbooks.map((guestbook, i) => (
+                <PostIt
+                  key={i}
+                  content={guestbook.content}
+                  name={guestbook.name}
+                />
               ))}
             </div>
             {canScrollLeft && (
